@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 
 public class ArrayDequeTest {
     @Test
-    public void addFistTest(){
+    public void addFirstTest(){
         System.out.println("加入8个元素， 未扩容");
         ArrayDeque<Integer> ad = new ArrayDeque<>();
 
-        ad.addFist(1);
-        ad.addFist(2);
-        ad.addFist(3);
-        ad.addFist(4);
-        ad.addFist(5);
-        ad.addFist(6);
-        ad.addFist(7);
-        ad.addFist(8);
+        ad.addFirst(1);
+        ad.addFirst(2);
+        ad.addFirst(3);
+        ad.addFirst(4);
+        ad.addFirst(5);
+        ad.addFirst(6);
+        ad.addFirst(7);
+        ad.addFirst(8);
         assertEquals(Integer.valueOf(8), ad.get(0));
     }
 
@@ -53,7 +53,7 @@ public class ArrayDequeTest {
         ad.addLast(7);
         ad.addLast(0);
 
-        assertEquals(Integer.valueOf(1), ad.removeFist());
+        assertEquals(Integer.valueOf(1), ad.removeFirst());
         assertEquals(Integer.valueOf(0), ad.removeLast());
     }
 
@@ -80,13 +80,13 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void reSizeAddFist(){
+    public void reSizeAddFirst(){
         System.out.println("头加入32个元素");
 
         ArrayDeque<Integer> ad = new ArrayDeque<>();
 
         for(int i = 1; i <= 32; i++){
-            ad.addFist(i);
+            ad.addFirst(i);
         }
 
         assertEquals(Integer.valueOf(1), ad.get(31));
@@ -94,18 +94,18 @@ public class ArrayDequeTest {
 
 
     @Test
-    public  void reSizeRemoveFist(){
+    public  void reSizeRemoveFirst(){
         System.out.println("头加入33个元素, 头删掉25个");
 
 
         ArrayDeque<Integer> ad = new ArrayDeque<>();
 
         for(int i = 1; i <= 33; i++){
-            ad.addFist(i);
+            ad.addFirst(i);
         }
 
         for(int i = 1; i <= 25; i++) {
-            ad.removeFist();
+            ad.removeFirst();
         }
 
         assertEquals(Integer.valueOf(8), ad.get(0));

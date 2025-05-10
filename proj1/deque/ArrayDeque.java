@@ -22,7 +22,7 @@ public class ArrayDeque<T> {
         return  (index + 1) % items.length;
     }
 
-    public void addFist(T item){
+    public void addFirst(T item){
         if(size() == items.length){
             resize(2 * size);
         }
@@ -48,7 +48,7 @@ public class ArrayDeque<T> {
         return items[tmp];
     }
 
-    public T removeFist(){
+    public T removeFirst(){
         head = plusOne(head);
         T tmp = items[head];
 
