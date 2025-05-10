@@ -49,17 +49,25 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
+        if(isEmpty()){
+            return null;
+        }
+
         head = plusOne(head);
         T tmp = items[head];
 
         if(size() < items.length / 4 && items.length >= 16){
             resize(items.length / 2);
         }
-
+        size--;
         return tmp;
     }
 
     public T removeLast(){
+        if(isEmpty()){
+            return null;
+        }
+
         tail = minusOne(tail);
         T tmp = items[tail];
 
@@ -67,6 +75,7 @@ public class ArrayDeque<T> {
             resize(items.length / 2);
         }
 
+        size--;
         return  tmp;
     }
 
