@@ -1,6 +1,8 @@
 package deque;
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+public class ArrayDeque<T>  implements Iterable<T>{
     private int size;
     private static final int CAPACITY = 8;
     private int head;
@@ -41,6 +43,11 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index){
+        if(index >= size() || index < 0 || isEmpty()){
+            return null;
+        }
+
+
         int tmp = head;
         for(int i = 0; i <= index; i++){
             tmp = plusOne(tmp);
@@ -96,5 +103,61 @@ public class ArrayDeque<T> {
         head = capcity - 1;
         tail = size;
         items = newItems;
+    }
+
+    public void printDeque(){
+        for(int i = 0; i < size(); i++){
+            System.out.print(get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == null)
+            return false;
+        if(!(other instanceof ArrayDeque))
+            return false;
+
+        ArrayDeque<?> o = (ArrayDeque<?>) other;
+        if(o.size() != size)
+            return false;
+
+        for(int i = 0; i < size; i++){
+            if(o.get(i) != get(i))
+                return false;
+        }
+        return true;
+    }
+
+
+
+    private class ArrayDequeIterator implements Iterator<T>{
+        private int pos;
+
+        public ArrayDequeIterator(){
+            pos = 0;
+        }
+
+        @Override
+        public boolean hasNext(){
+            return pos < size;
+        }
+
+        @Override
+        public T next(){
+            if(!hasNext()){
+                return null;
+            }
+
+            T tmp = items[pos];
+            pos++;
+            return tmp;
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
     }
 }

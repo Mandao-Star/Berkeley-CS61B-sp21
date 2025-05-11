@@ -129,4 +129,33 @@ public class ArrayDequeTest {
         assertEquals(Integer.valueOf(8), ad.get(7));
     }
 
+
+//    @Test
+//    public void printDequeTest(){
+//        ArrayDeque<Integer> ad = new ArrayDeque<>();
+//
+//        ad.addLast(1);
+//        ad.addLast(2);
+//        ad.addLast(3);
+//
+//        assertEquals("1 2 3\n", ad.printDeque());
+//    }
+
+
+    @Test
+    public void equalsTest(){
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        ad.addLast(1);
+        ad.addLast(2);
+
+        ArrayDeque<Integer> other = new ArrayDeque<>();
+        other.addLast(1);
+        other.addLast(2);
+
+        assertEquals(true, ad.equals(other));
+
+        other.addLast(3);
+        assertEquals(false, ad.equals(other));
+    }
+
 }
