@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T>  implements Iterable<T>{
+public class ArrayDeque<T>  implements Iterable<T>, Deque<T> {
     private int size;
     private static final int CAPACITY = 8;
     private int head;
@@ -24,6 +24,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         return  (index + 1) % items.length;
     }
 
+    @Override
     public void addFirst(T item){
         if(size() == items.length){
             resize(2 * size);
@@ -33,6 +34,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         size++;
     }
 
+    @Override
     public void addLast(T item){
         if(size() == items.length){
             resize(2 * size);
@@ -42,6 +44,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         size++;
     }
 
+    @Override
     public T get(int index){
         if(index >= size() || index < 0 || isEmpty()){
             return null;
@@ -55,6 +58,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         return items[tmp];
     }
 
+    @Override
     public T removeFirst(){
         if(isEmpty()){
             return null;
@@ -70,6 +74,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         return tmp;
     }
 
+    @Override
     public T removeLast(){
         if(isEmpty()){
             return null;
@@ -86,12 +91,9 @@ public class ArrayDeque<T>  implements Iterable<T>{
         return  tmp;
     }
 
+    @Override
     public int size(){
         return size;
-    }
-
-    public boolean isEmpty(){
-        return size() == 0;
     }
 
     public void resize(int capcity){
@@ -105,6 +107,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         items = newItems;
     }
 
+    @Override
     public void printDeque(){
         for(int i = 0; i < size(); i++){
             System.out.print(get(i) + " ");
@@ -143,6 +146,7 @@ public class ArrayDeque<T>  implements Iterable<T>{
         public boolean hasNext(){
             return pos < size;
         }
+
 
         @Override
         public T next(){
